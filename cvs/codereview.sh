@@ -13,6 +13,11 @@
 #   然后要登录到cvs, cvs -d $CVSROOT login
 # --------------------------------------------------
 
+if (( $# < 2 )); then
+  echo "Usage: $0 filename branch_reversion"
+  exit 1
+fi
+
 tmpdir=/home/www/kevin/codereview
 
 cd $tmpdir
