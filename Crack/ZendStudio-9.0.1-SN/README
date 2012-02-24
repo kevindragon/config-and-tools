@@ -1,0 +1,2 @@
+1. 复制com.zend.php.core_9.0.1.201112141951.jar到plugins目录下面覆盖同名文件,注意备份原始文件
+2. 打开ZendStudio,输入sn.txt里的注册码
