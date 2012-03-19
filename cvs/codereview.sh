@@ -38,6 +38,11 @@ head_file=head-$suffix
 # get branch file
 cvs co -p -r $2 $filename > $branch_file 2>>cvs.log
 
+if (( $? > 0 )); then
+  echo "error:" $1 "have not reversion" $2
+  exit 1
+fi
+
 # get head branch file
 head_rev=`echo $2|awk -F "." '{print $1"."$2}'`
 cvs co -p -r $head_rev $filename > $head_file 2>>cvs.log

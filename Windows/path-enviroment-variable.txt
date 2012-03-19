@@ -1,0 +1,1 @@
+D:\Program Files\starter;D:\Program Files\ctags58;C:\Program Files\CVSNT\;D:\emacs-23.3\bin;D:\jcvs\;D:\Program Files\node-0.4.9\bin;D:\Program Files\Vim\vim73;D:\home\jcvs;D:\python27;D:\Program Files\php-4.4.9;D:\Program Files\Tencent\QQ\Bin;D:\check\data_count_check;D:\Program Files\libxml2-2.4.12-bin\bin;
