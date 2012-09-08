@@ -119,3 +119,11 @@ SQL_UPDATE_FIELD = {
     "law" : "law.indbtime",
     "case": "cases.in_time"
 }
+
+DATABASE = {
+    'host': 'localhost',
+    'port': 3006,
+    'user': 'test',
+    'pass': 'text',
+    'dbname': 'newlaw'
+}

@@ -4,6 +4,7 @@
 import argparse
 from autonomy import *
 from autnparameter import *
+from database import *
 
 if __name__ == "__main__":
 
@@ -33,7 +34,6 @@ if __name__ == "__main__":
                 if 'hotnews' == db:
                     printfields = 'article_id'
                 url = urls[db][idol]
-                print url
 
                 # 取id的正则表达式
                 p = re.compile("\s*<%s>(\d+)</%s>" % ((printfields, )*2), 
@@ -41,6 +41,15 @@ if __name__ == "__main__":
 
                 edp = ExportDataPool(idol, url, p)
                 edp.run()
+
+    # print sql statement
+    dbs_name = []
+    dbs_name = {}.fromkeys(reduce(lambda x,y: x+y[1:], idoldblist, dbs_name)).keys()
+    gdfd = GetDataFromDatabase(dbs_name)
+    allsql = gdfd.get_all_sql()
+    print "\n"
+    for dbsql in allsql.keys():
+        print "%s:\n%s" % (dbsql, allsql[dbsql])
 
     end_time = time.time()
 

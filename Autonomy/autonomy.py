@@ -1,10 +1,16 @@
 #!/usr/bin/env python
 # -*- coding=utf-8 -*-
 
+__doc__ = """\
+定义一些跟IDOL相关的类。
+
+比如去IDOL里面取数据，使用多线程取一个仓库里面的数据。
+"""
+
 import urlparse, urllib2, threading, time, os, re
 from autnparameter import *
 
-class ExportDataPool():
+class ExportDataPool(object):
     def __init__(self, idol, url, p):
         self.idol = idol
         self.url = url
