@@ -8,7 +8,8 @@ IDOL_HOST_LIST = ('http://192.168.2.200:9002',
 
 IDOL_HOST_DICT = {'idol200': IDOL_HOST_LIST[0],
                   'idol210': IDOL_HOST_LIST[1],
-                  'idol211': IDOL_HOST_LIST[2]}
+                  'idol211': IDOL_HOST_LIST[2],
+                  'idoldah': 'http://192.168.2.210:9003'}
 
 # 每一个库的最大数据量
 total_resuls = {"law": 700000, 
