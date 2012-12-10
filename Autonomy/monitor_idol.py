@@ -60,7 +60,7 @@ for idol_name in config.keys():
     rd = root.find('responsedata')
     cd = rd.find('committed_documents')
     # 如果超过报警上限，组织邮件内容
-    if cd.text >= ALERT_CEILING:
+    if int(cd.text) >= ALERT_CEILING:
         if not overflow:
             overflow = True
         mail_content += "%s's committed documents is overflow\n" % idol_name
