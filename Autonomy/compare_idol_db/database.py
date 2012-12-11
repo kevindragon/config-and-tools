@@ -21,6 +21,7 @@ class GetDataFromDatabase(threading.Thread):
         self.autndbs_name = autndbs_name
         if MYSQL_FLAG:
             self.dbconn = MySQLdb.connect(host=config.DATABASE['host'],
+                                          port=config.DATABASE['port'], 
                                           user=config.DATABASE['user'],
                                           passwd=config.DATABASE['pass'],
                                           db=config.DATABASE['dbname'])
@@ -33,7 +34,10 @@ class GetDataFromDatabase(threading.Thread):
             sql = self.get_sql_statement(dbname)
             n = self.dbcursor.execute(sql)
             res = self.dbcursor.fetchall()
-            results[dbname] = res
+            results[dbname] = []
+            for rows in res:
+                for field in rows:
+                    results[dbname].append(field)
 
         return results
 

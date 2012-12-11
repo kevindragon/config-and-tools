@@ -47,10 +47,13 @@ if __name__ == "__main__":
     dbs_name = {}.fromkeys(reduce(lambda x,y: x+y[1:], idoldblist, dbs_name)).keys()
     gdfd = GetDataFromDatabase(dbs_name)
     allsql = gdfd.get_all_sql()
-    print "\n"
     for dbsql in allsql.keys():
         print "%s:\n%s" % (dbsql, allsql[dbsql])
 
+    data_in_db = gdfd.get_data()
+    for db,ids in data_in_db.items():
+        filep = open("%s.csv" % db, "w")
+        print >> filep, "\n".join(map(str, ids))
     end_time = time.time()
 
     print "done total spent %s" % (end_time - start_time)

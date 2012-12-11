@@ -8,25 +8,26 @@ IDOL_HOST_LIST = ('http://192.168.2.200:9002',
 
 IDOL_HOST_DICT = {'idol200': IDOL_HOST_LIST[0],
                   'idol210': IDOL_HOST_LIST[1],
-                  'idol211': IDOL_HOST_LIST[2],
+                  'idol211': IDOL_HOST_LIST[2], 
                   'idoldah': 'http://192.168.2.210:9003'}
 
 # 每一个库的最大数据量
-total_resuls = {"law": 700000, 
+total_resuls = {"law": 800000, 
                 "law_rows": 20505, 
-                "case": 600000, 
+                "case": 800000, 
                 "caseCourt": 2000, 
                 "ip_cases": 7000, 
-                "hotnews": 8000, 
+                "hotnews": 10000, 
                 "newlaw": 19000, 
                 "profNewsletter": 2000, 
-                "ip_hottopic": 6000, 
+                "ip_hottopic": 10000, 
                 "ex_questions": 3000, 
                 "dtt": 1000, 
                 "journal": 1000, 
+                "lawpic": 70000, 
                 "contract": 2000, 
                 "expert": 5000, 
-                "ip_news": 4900, 
+                "ip_news": 8000, 
                 "ip_guide": 7000, 
                 "treaty": 5000, 
                 "foreignlaw": 100, 
@@ -34,9 +35,9 @@ total_resuls = {"law": 700000,
                 "commentary": 100, 
                 "ep_elearning": 200, 
                 "ep_news": 40000, 
-                "ep_news_case": 4000, 
-                "ep_news_law": 5000, 
-                "overview": 3000, 
+                "ep_news_case": 8000, 
+                "ep_news_law": 8000, 
+                "overview": 5000, 
                 "mini_book": 100, 
                 "mini_bbs": 100, 
                 "mini_book_chapter": 2000, 
@@ -54,6 +55,8 @@ SQL_LIST = {
     "case"             : "select cases.case_id from cases where cases.display=1", 
     "journal"          : ("select journal.article_id from (journal join journal_content "
                           "on journal.article_id=journal_content.article_id) where journal.display_flag=1"), 
+    "lawpic"           : ('SELECT lawpic.id FROM lawpic, law_attachment_mapping as lam WHERE '
+                          ' `display`=1 AND wordfile!="" AND lawpic.id=lam.law_at_id'), 
     "pgl_content"      : ("SELECT id  FROM ex_news WHERE sub_type=4 AND "
                           "ipnews_category=1 AND FIND_IN_SET('1',alltype)  AND is_display=1"), 
     "treaty"           : ("select treaties.treaty_id from (treaties join treaties_content on "
@@ -76,7 +79,7 @@ SQL_LIST = {
                           "`user`.username like 'ufida_%'"), 
     "topic_taxonomy"   : "select id from ex_taxonomy", 
     "law_rows"         : "select law_rows.id from law_rows where is_display=1", 
-    "ip_guide"         : "select ex_news.id from ex_news where ex_news.sub_type=4 and is_display=1", 
+    "ip_guide"         : "select ex_news.id from ex_news where ex_news.sub_type=4 and is_display=1 and alltype!='1'", 
     "ip_hottopic"      : ("select ex_news.id from ex_news where ex_news.sub_type=3 and "
                           "ipnews_category = 1 and is_display=1 and alltype!='1'"), 
     "ip_news"          : "select ex_news.id from ex_news where ex_news.sub_type=1 and is_display=1 and find_in_set('2',alltype)", 
@@ -122,9 +125,9 @@ SQL_UPDATE_FIELD = {
 }
 
 DATABASE = {
-    'host': 'localhost',
-    'port': 3006,
-    'user': 'test',
-    'pass': 'text',
-    'dbname': 'newlaw'
+    'host': '',
+    'port': 3306,
+    'user': '',
+    'pass': '',
+    'dbname': ''
 }

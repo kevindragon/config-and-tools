@@ -83,8 +83,10 @@ class ExportDataPool(object):
             fp.write("\n".join(ids_content)+"\n")
             fp.close()
             
-        thread_num > 1 and os.system("cat %s > %s-%s.ids" %
-                                     (" ".join(idfiles), self.idol, db_name))
+        combine_cmd = ("cat %s > %s-%s.ids" %
+                        (" ".join(idfiles), self.idol, db_name))
+        print combine_cmd
+        thread_num > 1 and os.system(combine_cmd)
             
         print "pick up done"
 

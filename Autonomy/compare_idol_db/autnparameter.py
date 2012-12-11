@@ -14,7 +14,7 @@ def get_url_pattern(idol, autndb):
     Returns:
         a query statement for specify idol and database
     """
-    urltemplate = ('/action=query&anylanguage=true&text=*&'
+    urltemplate = ('/action=query&anylanguage=true&combine=simple&text=*&'
                    'databasematch=%s&maxresults=%d&printfields=%s')
 
     urls = {}
