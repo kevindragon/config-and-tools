@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# --------------------
+# connect to sepcify ssh server
+# --------------------
+
+
+if [ "$1" = "stg2" ]
+then
+    host=staging2.lexisnexis.com.cn
+    if [ "$3" = "vpn" ]
+    then
+        host=192.168.0.31
+    fi
+    if [ "$2" = "root" ]; then
+        ssh root@$host
+    else
+        ssh dchk@$host
+    fi
+
+elif [ "$1" = "210" ]
+then
+    ssh root@10.123.4.210
+
+elif [ "$1" = "211" ]
+then
+    ssh root@10.123.4.211
+
+elif [ "$1" = "212" ]
+then
+    ssh root@10.123.4.212
+fi
