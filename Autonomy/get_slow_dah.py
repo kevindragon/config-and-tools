@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__doc__ = """获取IDOL日志里面比较慢的请求"""
+__doc__ = """获取IDOL日志里面比较慢的请求，按响应时间倒序排列。\
+如果响应时间大于2秒的就认为是比较慢的请求"""
 
 import sys
 import re
@@ -22,11 +23,13 @@ for n, line in enumerate(logs):
             point = n-1
             while point > 0:
                 if re.search("\d\d \["+matched[0][0]+"\] action=", logs[point], re.IGNORECASE):
-                    tmp_slow = (float(tmp_slow), logs[point][24:logs[point].rfind(' ')])
+                    tmp_slow = (float(tmp_slow), 
+                                logs[point][24:logs[point].rfind(' ')], 
+                                logs[point][:20])
                     break
                 point -= 1
             slow_logs.append(tmp_slow)
 
 slow_log_sorted = sorted(slow_logs, lambda x,y: cmp(y[0], x[0]))
 
-print "\n".join(map(lambda x: str(x[0])+"; "+x[1], slow_log_sorted))
+print "\n".join(map(lambda x: str(x[0])+"; "+x[1]+"; "+x[2], slow_log_sorted))
